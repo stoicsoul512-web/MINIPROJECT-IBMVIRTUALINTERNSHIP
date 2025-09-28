@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Projects - Vishnupriya's Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "EW", sans-serif;
+            height: 100%;
+            display: flex;
+            background-color: #f5f5f5;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 25%;
+            min-width: 200px;
+            background-color: burlywood;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 100px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding-left: 50px;
+        }
+
+        .sidebar li {
+            font-size: 30px;
+            font-family: fantasy;
+            font-weight: bold;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+
+        .sidebar li:hover {
+            color: #fff;
+        }
+
+        /* Main content */
+        .content {
+            flex: 1;
+            padding: 50px;
+        }
+
+        .content h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        /* Skill input */
+        #skills {
+            font-size: 18px;
+            padding: 8px;
+            width: 300px;
+        }
+
+        #addBtn {
+            padding: 8px 15px;
+            font-size: 18px;
+            margin-left: 10px;
+            background-color: #6a11cb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #addBtn:hover {
+            background-color: #2575fc;
+        }
+
+        #skillList {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #skillList span {
+            padding: 5px 10px;
+            margin: 5px;
+            background: #87cefa;
+            color: white;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                padding-top: 20px;
+            }
+            .sidebar ul {
+                padding-left: 20px;
+                display: flex;
+                justify-content: space-around;
+            }
+            .sidebar li {
+                font-size: 20px;
+                margin: 10px 0;
+            }
+            .content {
+                padding: 20px;
+            }
+        }
+        /* Project Card Styles */
+.project-card {
+    background-color: white;
+    color: #333;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.project-card h3 {
+    margin-top: 0;
+    font-size: 28px;
+    color: #6a11cb;
+}
+
+.project-card p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #ffda79;
+    color: #6a11cb;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.project-link:hover {
+    background-color: #ffc107;
+}
+/* Profile Links */
+.profile-link {
+    margin: 15px 0;
+}
+
+.profile-link a {
+    text-decoration: none;
+    color: #6a11cb;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 8px 15px;
+    background-color: #ffda79;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.profile-link a:hover {
+    background-color: #ffc107;
+    transform: translateY(-3px);
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <ul>
+            <li id="skills-tab">Skills</li>
+            <li id="projects-tab">Projects</li>
+            <li id="profile-tab">Profile Links</li>
+        </ul>
+    </aside>
+
+    <!-- Main content -->
+    <main class="content">
+        <div id="skills-section">
+            <h2>Skills</h2>
+            <input type="text" id="skills" size="30" maxlength="30" placeholder="Enter a Skill">
+            <button id="addBtn">Add</button>
+            <div id="skillList">MySkills:</div>
+        </div>
+
+        <!-- Placeholder sections for Projects and Profile Links -->
+        <div id="projects-section" style="display:none;">
+            <h2>Projects</h2>
+          <!-- Project Card: Student Management System -->
+<div class="project-card">
+    <h3>Student Management System</h3>
+    <p>
+        A Java console application that allows adding, viewing, and managing student records. Demonstrates object-oriented programming concepts like classes, objects, and data encapsulation.
+    </p>
+    <p><strong>Technologies:</strong> Java, OOP</p>
+<button class="project-link" id="viewCodeBtn">View Code</button>
+<div id="codeContainer" style="display:none; margin-top:15px;">
+    <pre id="projectCode"></pre>
+</div>
+
+</div>
+
+        </div>
+
+        <div id="profile-section" style="display:none;">
+    <h2>Profile Links</h2>
+
+    <div class="profile-link">
+        <a href="#" target="_blank">LinkedIn</a>
+    </div>
+
+    <div class="profile-link">
+        <a href="#" target="_blank">GitHub</a>
+    </div>
+
+    <div class="profile-link">
+        <a href="#" target="_blank">Instagram</a>
+    </div>
+
+    <div class="profile-link">
+        <a href="#" target="_blank">Email</a>
+    </div>
+</div>
+
+    </main>
+
+    <!-- Script for dynamic skill adding and tab switching -->
+    <script>
+        // Skill adding
+        const input = document.getElementById("skills");
+        const addBtn = document.getElementById("addBtn");
+        const list = document.getElementById("skillList");
+
+        function addSkill() {
+            let value = input.value.trim();
+            if (value === "") return;
+            let temp = document.createElement("span");
+            temp.textContent = value;
+
+            temp.addEventListener("click", function() {
+                temp.remove();
+            });
+
+            list.appendChild(temp);
+            input.value = "";
+        }
+
+        addBtn.addEventListener("click", addSkill);
+        input.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") addSkill();
+        });
+
+        // Tab switching
+        const skillsTab = document.getElementById("skills-tab");
+        const projectsTab = document.getElementById("projects-tab");
+        const profileTab = document.getElementById("profile-tab");
+
+        const skillsSection = document.getElementById("skills-section");
+        const projectsSection = document.getElementById("projects-section");
+        const profileSection = document.getElementById("profile-section");
+
+        skillsTab.addEventListener("click", () => {
+            skillsSection.style.display = "block";
+            projectsSection.style.display = "none";
+            profileSection.style.display = "none";
+        });
+
+        projectsTab.addEventListener("click", () => {
+            skillsSection.style.display = "none";
+            projectsSection.style.display = "block";
+            profileSection.style.display = "none";
+        });
+
+        profileTab.addEventListener("click", () => {
+            skillsSection.style.display = "none";
+            projectsSection.style.display = "none";
+            profileSection.style.display = "block";
+        });
+
+      
+const viewCodeBtn = document.getElementById("viewCodeBtn");
+const codeContainer = document.getElementById("codeContainer");
+const projectCode = document.getElementById("projectCode");
+
+const fullCode = `import java.util.ArrayList;
+import java.util.Scanner;
+
+class Student {
+    private String name;
+    private int rollNo;
+    private int age;
+
+    public Student(String name, int rollNo, int age) {
+        this.name = name;
+        this.rollNo = rollNo;
+        this.age = age;
+    }
+
+    public String getName() { return name; }
+    public int getRollNo() { return rollNo; }
+    public int getAge() { return age; }
+
+    public void setName(String name) { this.name = name; }
+    public void setRollNo(int rollNo) { this.rollNo = rollNo; }
+    public void setAge(int age) { this.age = age; }
+
+    public void display() {
+        System.out.println("Name: " + name + ", Roll No: " + rollNo + ", Age: " + age);
+    }
+}
+
+public class StudentManagementSystem {
+    private ArrayList<Student> students = new ArrayList<>();
+
+    public void addStudent(Student s) { students.add(s); }
+    public void deleteStudent(int rollNo) {
+        students.removeIf(s -> s.getRollNo() == rollNo);
+    }
+    public void updateStudent(int rollNo, String newName, int newAge) {
+        for(Student s : students) {
+            if(s.getRollNo() == rollNo) {
+                s.setName(newName);
+                s.setAge(newAge);
+            }
+        }
+    }
+    public void displayAll() {
+        for(Student s : students) {
+            s.display();
+        }
+    }
+
+    public static void main(String[] args) {
+        StudentManagementSystem sms = new StudentManagementSystem();
+        sms.addStudent(new Student("Alice", 101, 20));
+        sms.addStudent(new Student("Bob", 102, 21));
+        sms.displayAll();
+
+        sms.updateStudent(101, "Alice Smith", 21);
+        sms.deleteStudent(102);
+        sms.displayAll();
+    }
+}`;
+
+viewCodeBtn.addEventListener("click", () => {
+    codeContainer.style.display = codeContainer.style.display === "none" ? "block" : "none";
+    projectCode.textContent = fullCode;
+});
+
+
+    </script>
+</body>
+</html>
