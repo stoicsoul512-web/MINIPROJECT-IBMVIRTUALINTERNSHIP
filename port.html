@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>inp</title>
+         <style>
+             @font-face {    /*for custom font*/
+                  font-family: "EW";
+                  src: url("Fonts/font.ttf") format("truetype");
+                }
+
+              body{      /*for color effect */
+                margin:0;
+                background: linear-gradient(135deg, #d8b9cb, #db8067e3);
+              }
+              header{
+                position: fixed;
+                top:0;
+                left:-50px;
+                width:100%;
+                height: 50px;
+                background-color: black;
+                display:flex;
+                justify-content:flex-end;
+                align-items:center;
+                padding:0 30px;
+                z-index:1000;
+             /*   background-color: rgba(4, 12, 73, 0.324);*/
+              }
+
+              nav{
+                gap: 20px;
+                display: flex;
+              /*  position: relative; */
+              }
+              nav a{
+                color:white;
+                text-decoration: none;
+                font-weight: bold;
+                font-size:20px;
+              }
+ 
+
+            .wrapper{                       /*for container */
+               display:flex;
+               justify-content: center; 
+               align-items:center;
+               height:100vh;
+              
+            }
+            .indent {                    /*for title alignment */
+             display: inline-block;       
+             margin-left:100px;
+            }
+
+
+            #c{                                 /*for title style */
+                font-size:100px;
+                color:aliceblue;
+                /*text-align:center;*/
+                font-family:"EW" , sans-serif;
+            }
+         </style>
+    </head>
+
+    <body>
+        <header>
+             <nav> <!--for links to other pages -->
+                  <a href="home.html">Home</a>
+                  <a href="about.html">About</a>
+                 <a href="projects.html">Projects</a>
+                 <a href="contact.html">Contact</a>
+             </nav>
+        </header>
+
+         <div class="wrapper"> <!--for a container -->
+             <div id="c"> <B>MY WORK<br><span class="indent">MY SPACE</span></B> <!--for  title -->
+            </div>
+        </div>
+    </body>
+
+    
+    
+</html>
